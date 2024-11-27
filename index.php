@@ -8,6 +8,15 @@
  * Based on: https://p.cweiske.de/656
  */
 
+// handle preflight request
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    header('HTTP/1.1 204 No Content');
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: *');
+    header('Access-Control-Allow-Headers: *');
+    exit(0);
+}
+
 if (!isset($_GET['url']) || $_GET['url'] == '') {
     header('HTTP/1.0 400 Bad Request');
     echo "url parameter missing\n";
